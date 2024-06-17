@@ -1,31 +1,23 @@
 
-package a3;
+package conector;
 
-//import com.sun.jdi.connect.spi.Connection;
+import java.sql.*;
 import java.sql.Connection;
-//import javax.swing.JOptionPane;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public class ConexaoDAO {
+    public static Connection conector(){
 
-    /*Codigo do grupo antigo
-    public Connection conectarBD(){
-    Connection conn = null;
+    java.sql.Connection conexao = null;
+    String driver = "com.mysql.cj.jdbc.Driver";
+    String url ="jdbc:mysql://localhost:3306/a3";
+    String user = "root";
+    String password = "";
         try {
-            
-            String url = "jdbc:mysql:\\localhost:3306/a3?user=root&password=";
-            conn = (Connection) DriverManager.getConnection(url);
-            
-        } catch (SQLException erro) {
-            JOptionPane.showMessageDialog(null, erro.getMessage());
+            Class.forName(driver);
+            conexao = DriverManager.getConnection(url, user, password);
+            return conexao;
+        } catch (Exception e) {
+            return null;
         }
-        return conn;
-    }
-    
-     */
-    //codigo novo 
-    public static Connection conectarBD() throws SQLException {
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/crudea3");
-    }
+}
 }
